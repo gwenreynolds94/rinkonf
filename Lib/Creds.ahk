@@ -25,6 +25,7 @@ class Creds {
         pwsh_stdout := pwsh.StdOut.ReadAll()
         Creds.User.name := (RegExMatch(pwsh_stdout, "(?<=(?<!\S)username:)(.+)", &_uname), _uname[1])
         Creds.User.password := (RegExMatch(pwsh_stdout, "(?<=(?<!\S)password:)(.+)", &_upass), _upass[1])
+        wshell := ""
     }
     static HasUserCreds => (!!Creds.User.name and !!Creds.User.password)
     static RunAsUser(*) => Creds.HasUserCreds and (Creds.active := "User", RunAs(Creds.User.name, Creds.User.password))
@@ -55,5 +56,6 @@ class Creds {
         )
         Creds.User.name := username_input.Value
         Creds.User.password := password_input.Value
+        wshell := ""
     }
 }
