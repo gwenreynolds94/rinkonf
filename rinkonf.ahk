@@ -3,10 +3,9 @@
 #Requires AutoHotkey v2+
 #SingleInstance Force
 
-#Include <Creds>
+; #Include <Creds>
+; Creds.RunAsUser()
 
-Creds.RunAsUser()
-
-#Include tre.ahk
+; #Include tre.ahk
 #Include ki.ahk
 
